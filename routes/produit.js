@@ -19,7 +19,7 @@ const produit = require('../models/produit')
     produitRouter.get('/allproduct',async(req,res)=>{
         try {
             let result = await product.find()
-            res.send({msg:"voici toutes les produits",result})
+            res.send({msg:"voici toutes les produits",voicilist:result})
             
         } catch (error) {
             console.log((error))
@@ -31,7 +31,7 @@ const produit = require('../models/produit')
     produitRouter.get('/:id',async(req,res)=>{
         try {
             let result= await product.findById({_id:req.params.id})
-            res.send({msg:"voici produit",result})
+            res.send({msg:"voici produit",result:result})
             
         } 
         catch (error) {
