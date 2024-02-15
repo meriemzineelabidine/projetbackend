@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { userLogin } from "../Js/SliceUser/Sliceuser";
+import '../css/login.css'
 
 const Login = () => {
     const [login, setlogin] = useState({
@@ -14,13 +15,14 @@ const Login = () => {
       let navigate = useNavigate();
     
   return (
-    <div>
-    <div className="wrapper">
-      <form onSubmit={(e) => e.preventDefault()} className="form-signin">
-        <h2 className="form-signin-heading">Please login</h2>
+  <div>
+    <div className="contenu_login">
+    <div className="box_login">
+      <form onSubmit={(e) => e.preventDefault()} className="box_form">
+        <h2 className="txt_style">Please login</h2>
         <input
           type="text"
-          className="form-control"
+          className="input_login"
           name="username"
           placeholder="Email Address"
           required=""
@@ -29,7 +31,7 @@ const Login = () => {
         />
         <input
           type="password"
-          className="form-control"
+          className="input_login"
           name="password"
           placeholder="Password"
           required=""
@@ -45,11 +47,11 @@ const Login = () => {
           Remember me
         </label>
         <button
-          className="btn btn-lg btn-primary btn-block"
+          className="btn_login"
           onClick={() => {
             dispatch(userLogin(login));
             setTimeout(() => {
-              navigate("/profil");
+              navigate("/");
             }, 1000);
             setTimeout(() => {
               window.location.reload();
@@ -58,9 +60,10 @@ const Login = () => {
         >
           Login
         </button>
-        u already have account <Link to="/">Register now </Link>
+       <div className="link_login">u already have account <Link to="/" className="link_register">Register now </Link></div>
       </form>
     </div>
+  </div>
   </div>
   )
 }

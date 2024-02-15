@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import {useDispatch} from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { userRegister } from "../Js/SliceUser/Sliceuser";
-
+import '../css/Register.css'
 const Register = () => {
     const [register, setregister] = useState({
         name: "",
@@ -16,13 +16,13 @@ const Register = () => {
       const navigate=useNavigate()
   return (
     
-        <div>
-      <div className="wrapper">
-        <form onSubmit={(e) => e.preventDefault()} className="form-signin">
-          <h2 className="form-signin-heading">Please register</h2>
+        <div className="contenu_register">
+      <div className="box_register">
+        <form onSubmit={(e) => e.preventDefault()} className="box_form">
+          <h2 className="txt_style">Please register</h2>
           <input
             type="text"
-            className="form-control"
+            className="input_login"
             name="username"
             placeholder="name"
             required=""
@@ -31,7 +31,7 @@ const Register = () => {
           />
           <input
             type="text"
-            className="form-control"
+            className="input_login"
             name="lastname"
             placeholder="last name"
             required=""
@@ -42,7 +42,7 @@ const Register = () => {
           />
           <input
             type="text"
-            className="form-control"
+            className="input_login"
             name="username"
             placeholder="Email Address"
             required=""
@@ -53,7 +53,7 @@ const Register = () => {
           />
           <input
             type="password"
-            className="form-control"
+            className="input_login"
             name="password"
             placeholder="Password"
             required=""
@@ -63,7 +63,7 @@ const Register = () => {
           />
 
           <button
-            className="btn btn-lg btn-primary btn-block"
+            className="btn_login"
             onClick={() => {
               dispatch(userRegister(register),navigate("/profil"));
             }}
@@ -72,7 +72,7 @@ const Register = () => {
           </button>
 
           <h5>
-            u already have account <Link to="/login">sign in </Link>
+          <div className="link_login"> u already have account <Link to="/login" className="link_register">sign in </Link></div>
           </h5>
         </form>
       </div>

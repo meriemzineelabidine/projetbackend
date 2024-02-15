@@ -1,0 +1,47 @@
+.contenu_register{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.box_register{
+    margin-top: 20px;
+    width: 50%;
+    height: 500px;
+    box-shadow: 3px 5px 10px gray;
+    margin-top: 50px;
+}
+.box_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.txt_style{
+    color: orange;
+    margin-bottom: 20px;
+}
+.input_login{
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 50%; 
+}
+.btn_login{
+    background-color: orange;
+    color: white;
+    border-radius: 5px;
+    border:none;
+    font-size: 20px;
+    padding: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.link_login{
+    display: flex;  
+}
+.link_register{
+    color: orange;
+    margin-left: 5px;
+  
+}

@@ -23,7 +23,7 @@ const userschema=schema({
     },
     isadmin:{
         type:Boolean,
-        default:false
-    }
+        default:false,
+    },
 })
 module.exports=user=mongoose.model('user',userschema)

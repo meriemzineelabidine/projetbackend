@@ -1,0 +1,179 @@
+.nav_dashbord{
+    display: flex;
+    justify-content: space-around;
+    background-color: orange;
+}
+.menu_list_dash{
+    display: flex;
+    justify-content: space-around;
+}
+.menu_list_dash li {
+list-style: none;
+padding: 15px;
+}
+.admin_img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url("C:\Users\Mohamed Amine\Desktop\site E-commerce\client\public\images\logo_dashbord.png");
+    background-size: cover;
+    border: 2px solid  rgba(255, 255, 255, 0.254);
+    margin-top: 5px;
+
+    
+}
+.menu_list_dash a {
+color: white;
+font-size: 20px;
+font-weight: bold;
+
+}
+.menu_list_dash a :hover{
+    color:black;
+}
+.sous_tt{
+    margin-top: 45px;
+    color: white;
+    font-size: 18px;
+}
+
+
+.position_contenu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200px;
+}
+.contenu_dash{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.box_dash{
+    background-color: rgba(0, 0, 0, 0.848);
+    width: 230px;
+    height: 130px;
+    color: white;
+    border-radius: 7px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+}
+.box_dash:hover{
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.653);
+}
+
+th, td {
+
+ padding: 8px;
+        
+ }
+ td{
+    background-color: rgba(0, 0, 0, 0.761);
+    color: white;
+ }
+ th {
+   background-color: orange;
+   color: white;
+            
+  }
+  .colone{
+    width: 450px;
+    font-size: 15px;
+    text-align: center;
+ }
+
+.table_dash{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 2000px;
+}
+.titre_tableau{
+    margin-top: 100px;
+    font-size: 25px;
+    font-weight: bolder;
+    color: black;
+    margin-bottom: 50px;
+}
+.btn_dash_supp{
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-weight: bold;
+    margin-right: 3px;
+}
+.btn_dash_modif{
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-weight: bold;
+    margin-left: 3px;
+}
+.btn_commande{
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-weight: bold;
+    margin-left: 3px;
+}
+.btn_ajout_produit{
+    background-color: orange;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+.block_ajout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    box-shadow: 3px 3px 10px black;
+    width: 80%;
+    height: 500px;
+    justify-content: center;
+}
+.block_ajout input{
+    width: 33.33%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 7px;
+   
+}
+.btn_modif_produit{
+    background-color: orange;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.modif{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+.position_modif{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sous_tt:hover{
+color: black;
+}
+.admin_img:hover{
+border-color: black;
+box-shadow: 3px 3px 15px black;
+}

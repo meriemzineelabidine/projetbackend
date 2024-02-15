@@ -6,9 +6,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { userCurrent } from "../Js/SliceUser/Sliceuser";
 import { addcommande } from "../Js/CommandeSlice";
-import { getbyidproduct } from "../Js/SliceProduit/SliceProduit";
+import NavBoom from "./NavBoom";
+
 
 const Detail = () => {
+      // const [quantite, setquantite] = useState(1)
+    // const incrementeState = ()=>{
+    //     setquantite(quantite+1)
+
+    // }
+    // const decrementeState = ()=>{
+    //     setquantite((prevEtat) => (prevEtat > 0 ? prevEtat - 1 : 0))
+
+    // }
   const isAuth = localStorage.getItem("token");
   const user=useSelector((state)=>state.user.user);
   const products=useSelector((state)=>state.produit.produit)
@@ -17,7 +27,7 @@ const Detail = () => {
   const navigate = useNavigate();
 const params=useParams()
 const product=products?.filter((el)=>el._id==params.id)[0];
-console.log(product)
+console.log("produit",product)
 
   const [quantite, setquantite] = useState("");
 //*********************************************** */
@@ -33,20 +43,28 @@ console.log(product)
 
 
   return (
-    <div>
+    <div className="page_detail">
+      <div><NavBoom></NavBoom></div>
       <div className="description container">
-        <img src={product.img} className="img-description"></img>
-        <div>
-          <div className="txt-detail">{product.nomProduit}</div>
-          <div>{product.marque}</div>
+        <div className="partie_img" style={{ backgroundImage:`url(${product?.img})`, backgroundSize:"contain" ,backgroundRepeat:"no-repeat"}}>
+       
+       </div>
+        <div className="partie_detail_produit">
+          <div className="border_title">
+          <div className="txt-detail">{product?.nomproduit}</div>
+          <div className="txt-marque">marque : {product?.marque}</div></div>
+          <div className="style_prix">{product?.prix} TND </div>
+          <div className="border_title" style={{color:"gray",fontSize:"10px"}}>disponible avec livraison</div>
+        Quantite:
+        <input type="number"  className="input_quantite" onChange={(e) => setnewcommande({...newcommande,quantite:e.target.value})} />
+        <button className="btn_acheter"  onClick={(e)=>(dispatch(addcommande(newcommande),navigate('/pannier')))}>Acheter</button>
+      
         </div>
       </div>
-      <div>
-        quantite:
-        <input type="number" onChange={(e) => setnewcommande({...newcommande,quantite:e.target.value})} />
-        <button onClick={(e)=>dispatch(addcommande(newcommande))}>Acheter</button>
+      <div className="container detail">
+        <div className="txt_description">Detail</div>
+      <div className="descrep">{product?.description}</div>
       </div>
-      <p>{product.description}</p>
     </div>
   );
 };

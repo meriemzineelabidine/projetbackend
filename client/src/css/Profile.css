@@ -1,0 +1,87 @@
+.bienvenue{
+    margin-top: 20px;
+    color: orange;
+    text-align: center;
+}
+
+
+.compte_position{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    height: 700px;
+   
+}
+.box_profile{
+    width: 80%;
+    height: 400px;
+    box-shadow: 3px 5px 15px rgba(128, 128, 128, 0.19);
+    display: flex;
+ 
+}
+.profile_img{
+    background-color: rgba(255, 166, 0, 0.884);
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.profile_information{
+     background-color: rgba(128, 128, 128, 0.023);
+     width: 100%;
+     
+}
+.user_img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 1px solid white;
+    margin-top: 20px;
+    
+}
+.img_personel{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.name_user{
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+.title_info{
+    margin-top: 20px;
+    border-bottom: 1px solid black;
+    font-size: 25px;
+    font-weight: bolder;
+}
+.title_commande{
+    margin-top: 20px;
+    border-bottom: 1px solid black;
+    font-size: 25px;
+    font-weight: bolder;
+}
+.style_email{
+    margin-top: 20px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.info_com{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.style_txt_com{
+    font-size: 15px;
+    font-weight: 500;
+}
+.icon_update_email{
+    color: orange;
+    
+}

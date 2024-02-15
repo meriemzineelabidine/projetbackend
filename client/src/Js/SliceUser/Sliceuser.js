@@ -31,6 +31,28 @@ export const userCurrent = createAsyncThunk("user/current", async () => {
     console.log(error);
   }
 });
+//update user
+export const updateuser = createAsyncThunk("updateuser", async ({id,infouser}) => {
+  try {
+    let response = await axios.put(
+      `http://localhost:5500/user/${id}`,infouser);
+      
+    return await response;
+  } catch (error) {
+    console.log(error);
+  }
+});
+//all users
+export const getuser = createAsyncThunk("/getuser", async () => {
+  try {
+    let resultat = await axios.get("http://localhost:5500/user/allusers");
+    return resultat;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
 
 const initialState = {
   user: null,
@@ -48,6 +70,7 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+    //user register
     .addCase(userRegister.pending, (state) => {
       state.status = "pending";
     })
@@ -59,6 +82,7 @@ export const userSlice = createSlice({
     .addCase(userRegister.rejected, (state) => {
       state.status = "fail";
     })
+    //user login
     .addCase(userLogin.pending, (state) => {
       state.status = "pending";
     })
@@ -66,18 +90,43 @@ export const userSlice = createSlice({
       state.status = "succcessssss";
       state.user = action.payload?.data?.user;
       localStorage.setItem("token", action.payload?.data?.token);
+      localStorage.setItem("isadmin", action.payload?.data?.user?.isadmin);
     })
     .addCase(userLogin.rejected, (state) => {
       state.status = "fail";
     })
+    //user current
     .addCase(userCurrent.pending, (state) => {
       state.status = "pending";
     })
     .addCase(userCurrent.fulfilled, (state,action) => {
       state.status = "succcessssss";
       state.user = action.payload?.data?.user;
+      
     })
     .addCase(userCurrent.rejected, (state) => {
+      state.status = "fail";
+    })
+     //update user
+     .addCase(updateuser.pending, (state) => {
+      state.status = "pending";
+    })
+    .addCase(updateuser.fulfilled, (state) => {
+      state.status = "success";
+      
+    })
+    .addCase(updateuser.rejected, (state) => {
+      state.status = "fail";
+    })
+    // get all users
+    .addCase(getuser.pending, (state) => {
+      state.status = "pending";
+    })
+    .addCase(getuser.fulfilled, (state, action) => {
+      state.status = "success";
+      state.user = action.payload?.data?.voicilist;
+    })
+    .addCase(getuser.rejected, (state) => {
       state.status = "fail";
     })
   },

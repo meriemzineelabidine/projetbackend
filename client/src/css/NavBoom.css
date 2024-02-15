@@ -1,6 +1,6 @@
 .bar-menu{
     
-    background-color: rgba(128, 128, 128, 0.048);
+    background-color:white;
     width: 100%;
     height: 100px;
 }
@@ -147,39 +147,73 @@ color: black;
     box-shadow: 2px 3px 5px gray;
     
 }
-.icon-profile{
-    color: black;
-    font-size: 25px;
-    margin-top: 40px;
-    margin-left: 15px;
-}
+
 .cnx{
    display: flex;
-
+   color: black;
 }
-.select-cnx{
+a {
+    text-decoration: none;
+}
+.compte{
+    margin-top: 40px;
+    margin-left: 20px;
+}
+.icon_compte{
+    font-size: 25px;
+    margin-left: 20px;
+    margin-right: 10px;
+    color: black;
+}
+.lien_compte{
+    font-size:15px ;
+    font-weight: bold;
+    color:black
+}
+.compte_c{
+    display: flex;
+}
+.lien_icon{
+    color: black;
+    margin-top: 40px;
+    margin-left: 5px;
     font-size: 15px;
-    height: 30px;
-    margin-top: 40px;
-    margin-left: 8px;
-    border: transparent;
-    background-color: transparent;
-
+    font-weight: bold;
 }
-.select-cnx:hover{
-    border: none;
+.pannier{
+    display: flex;
+    
+}
+a :hover{
     color: orange;
 }
-
-.icon-profile:hover{
-    color: orange;
-}
-
-
-.m-t{
+.icon-profile{
+    font-size: 30px;
     margin-top: 40px;
-    margin-left: 8px;
-}  
-.m-t:hover{
- color: orange;
+    margin-left: 20px;
+    color: black;
+  
+
 }
+.notification{
+    position: relative;
+}
+.cercle{
+    background-color: orange;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 35px;
+    right: -3px;
+    border: 2px solid white;
+    font-weight: bold;  
+}
+.nbre_commandes{
+    margin-top: -1px;
+    text-align: center;
+    font-size: 12px;
+}
+
+

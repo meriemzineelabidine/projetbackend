@@ -13,13 +13,21 @@ export const getcommande = createAsyncThunk("/getcommande", async () => {
 //Api add commande 
 export const addcommande = createAsyncThunk("/addcommande", async (commande) => {
   try {
-    let resultat = await axios.get("http://localhost:5500/commande/addcommande",commande);
+    let resultat = await axios.post("http://localhost:5500/commande/addcommande",commande);
     return resultat;
   } catch (error) {
     console.log(error);
   }
 });
-
+//Api delete  commande
+export const deletecommande = createAsyncThunk("/deletecommande", async (id) => {
+  try {
+    let resultat = await axios.delete(`http://localhost:5500/commande/${id}`);
+    return resultat;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 const initialState = {
   commande: null,
@@ -54,6 +62,17 @@ export const commandeSlice = createSlice({
       .addCase(addcommande.rejected, (state) => {
         state.status = "fail";
       })
+        //delete commande
+        .addCase(deletecommande.pending, (state) => {
+          state.status = "pending";
+        })
+        .addCase(deletecommande.fulfilled, (state, action) => {
+          state.status = "success";
+         
+        })
+        .addCase(deletecommande.rejected, (state) => {
+          state.status = "fail";
+        })
 
     }
       

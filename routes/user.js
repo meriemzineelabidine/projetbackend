@@ -9,9 +9,9 @@ const isAuth=require('../middelwaire/passport')
 // sign up user
 
 userRouter.post("/signup",RulesRegister(),validation, async (req, res) => {
-  const { name, lastname, email, password } = req.body;
+  const { name, lastname, email, password,isadmin} = req.body;
   try {
-    const newuser = new User({ name, lastname, email, password });
+    const newuser = new User({ name, lastname, email, password ,isadmin});
     //find email
     const searchedUser = await User.findOne({ email });
     if (searchedUser) {
@@ -72,5 +72,29 @@ userRouter.post("/login", RulesLogin(), validation, async (req, res) => {
 userRouter.get("/current", isAuth(), (req, res) => {
   res.status(200).send({ user: req.user });
 });
+userRouter.put('/:id',async(req,res)=>{
+  const updatedData = req.body;
+  const _id = req.params.id;
+  try {
+      let result= await User.findByIdAndUpdate(_id,updatedData,{ new: true })
+      res.send({msg:"user modifié",result})
+      
+  } catch (error) {
+      console.log(error)
+      
+  }
+}
+);
+userRouter.get('/allusers',async(req,res)=>{
+  try {
+      let result = await User.find()
+      res.send({msg:"voici toutes les users",voicilist:result})
+      
+  } catch (error) {
+      console.log((error))
+   
+  }
+ 
+})
 
 module.exports = userRouter;
