@@ -31,29 +31,6 @@ export const userCurrent = createAsyncThunk("user/current", async () => {
     console.log(error);
   }
 });
-//update user
-export const updateuser = createAsyncThunk("updateuser", async ({id,infouser}) => {
-  try {
-    let response = await axios.put(
-      `http://localhost:5500/user/${id}`,infouser);
-      
-    return await response;
-  } catch (error) {
-    console.log(error);
-  }
-});
-//all users
-export const getuser = createAsyncThunk("/getuser", async () => {
-  try {
-    let resultat = await axios.get("http://localhost:5500/user/allusers");
-    return resultat;
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-
-
 const initialState = {
   user: null,
   status: null,
@@ -66,6 +43,11 @@ export const userSlice = createSlice({
     logout: (state, action) => {
       state.user = null;
       localStorage.removeItem("token");
+    },
+    logoutadmin: (state, action) => {
+      state.user = null;
+      localStorage.removeItem("token");
+      localStorage.removeItem("isadmin");
     },
   },
   extraReducers: (builder) => {
@@ -107,32 +89,11 @@ export const userSlice = createSlice({
     .addCase(userCurrent.rejected, (state) => {
       state.status = "fail";
     })
-     //update user
-     .addCase(updateuser.pending, (state) => {
-      state.status = "pending";
-    })
-    .addCase(updateuser.fulfilled, (state) => {
-      state.status = "success";
-      
-    })
-    .addCase(updateuser.rejected, (state) => {
-      state.status = "fail";
-    })
-    // get all users
-    .addCase(getuser.pending, (state) => {
-      state.status = "pending";
-    })
-    .addCase(getuser.fulfilled, (state, action) => {
-      state.status = "success";
-      state.user = action.payload?.data?.voicilist;
-    })
-    .addCase(getuser.rejected, (state) => {
-      state.status = "fail";
-    })
+    
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { logout } = userSlice.actions;
+export const { logout,logoutadmin } = userSlice.actions;
 
 export default userSlice.reducer;

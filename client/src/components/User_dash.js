@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Nav_dashbord from './Nav_dashbord'
 import { useDispatch, useSelector } from 'react-redux'
-import { getuser } from '../Js/SliceUser/Sliceuser'
+import { getuser } from '../Js/SliceUser/List_user'
 
 const User_dash = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getuser())
     }, [])
-
-  const usersss = useSelector((store)=>store.user?.user)
- const [users, setusers] = useState([usersss])
-
- 
-  
+  const users = useSelector((store)=>store.listuser?.listuser)
   return (
     <div>
       <div>
@@ -29,9 +24,9 @@ const User_dash = () => {
                 <th className='colone'>Lastname</th>
                 <th className='colone'>Email</th>
             </tr>
-       {users? users?.map((el)=>(
+       {users? users?.map((el,i)=>(
             <tr>
-              <td className='colone'></td>
+              <td className='colone'>{i+1}</td>
               <td className='colone'>{el?.name}</td>
               <td className='colone'>{el?.lastname}</td>
               <td className='colone'>{el?.email}</td>

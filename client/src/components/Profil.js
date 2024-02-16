@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout, updateuser, userCurrent } from "../Js/SliceUser/Sliceuser";
+import { logout,userCurrent } from "../Js/SliceUser/Sliceuser";
+import { updateuser } from "../Js/SliceUser/List_user";
 import NavBoom from "./NavBoom";
 import '../css/Profile.css'
 import { getcommande } from "../Js/CommandeSlice";
