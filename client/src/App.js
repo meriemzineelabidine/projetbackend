@@ -114,8 +114,7 @@ function App() {
         <Route path="/pannier" element={<Pannier></Pannier>}></Route>
         <Route element={<AdminRoute/>}>
           <Route path="/dashbord" element={<Dashbord/>}></Route>
-        </Route>
-        <Route
+          <Route
           path="/produit-dash"
           element={<Produit_dashbord></Produit_dashbord>}
         ></Route>
@@ -124,6 +123,8 @@ function App() {
           element={<Commande_dashbord></Commande_dashbord>}
         ></Route>
         <Route path="/user_dash" element={<User_dash></User_dash>}></Route>
+        </Route>
+       
     
       </Routes>
     </div>

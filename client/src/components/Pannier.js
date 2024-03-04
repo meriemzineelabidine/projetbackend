@@ -26,10 +26,10 @@ const Pannier = () => {
 
     // shjfhdfg
     const dispatch=useDispatch()
+    const [ping, setping] = useState(false)
     useEffect(() => {
       dispatch(getcommande());
-      
-    }, [])
+    }, [ping]);
  
 
     
@@ -73,7 +73,7 @@ for(let i=0;i<total?.length;i++)
           </div>
         
           <div className="partie2">
-            <div className="bouton_supprimer" onClick={()=>dispatch(deletecommande(el?._id))}>
+            <div className="bouton_supprimer" onClick={()=>dispatch((deletecommande(el?._id)),(setping(!ping)))}>
               <div className="icon_supprimer"><FontAwesomeIcon icon={faTrash} /></div><div>Supprimer</div>
             </div>
             <div className="quantite">

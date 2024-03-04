@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/Dasbord.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout, logoutadmin } from "../Js/SliceUser/Sliceuser";
 
@@ -8,6 +8,7 @@ const Nav_dashbord = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuth = localStorage.getItem("token");
+  const isadmin = localStorage.getItem("isadmin");
   return (
     <div>
       <div className="nav_dashbord">

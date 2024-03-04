@@ -85,3 +85,11 @@
     color: orange;
     
 }
+.button_dec{
+    background-color: orange;
+    color: white;
+    border: none;
+    border: 1px solide white;
+    border-radius: 7px;
+    padding: 5px;
+}

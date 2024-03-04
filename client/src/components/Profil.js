@@ -52,7 +52,7 @@ const Profil = () => {
           <div className="profile_img">
             <div className="user_img"><img src={user?.img} className="img_personel"></img></div>
             <div className="name_user">{user?.name}  {user?.lastname}</div>
-            <div><button onClick={()=>(dispatch(logout()),navigate('/'))}>se déconnecter</button></div>
+            <div><button  className="button_dec" onClick={()=>(dispatch(logout()),navigate('/'))}>se déconnecter</button></div>
           </div>
           <div className="profile_information">
             <div className="informations container">

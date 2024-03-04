@@ -3,6 +3,7 @@ import Nav_dashbord from "./Nav_dashbord";
 import { useDispatch, useSelector } from "react-redux";
 import { addproduit, deleteproduit, getproduct, updateproduit } from "../Js/SliceProduit/SliceProduit";
 
+
 const Produit_dashbord = () => {
   const [show, setshow] = useState(false);
   const [ajout, setajout] = useState(false);
@@ -44,6 +45,26 @@ const handlemodifyclick=(elementid)=>{
       <div>
         <Nav_dashbord></Nav_dashbord>
       </div>
+      <div className=" container pos_btn_ajout">
+      <button className="btn_ajout_produit" onClick={() => setajout(!ajout)}>
+          Ajouté un Produit
+        </button></div>
+        {ajout ? (
+          <div className="postion_block">
+          <div className=" container block_ajout">
+            <input type="text" placeholder="categorie" onChange={(e)=>setnewproduit({...newproduit,categorie:e.target.value})}></input>
+            <input type="text" placeholder="produit" onChange={(e)=>setnewproduit({...newproduit,produit:e.target.value})}></input>
+            <input type="text" placeholder="nomproduit" onChange={(e)=>setnewproduit({...newproduit,nomproduit:e.target.value})}></input>
+            <input type="text" placeholder="marque" onChange={(e)=>setnewproduit({...newproduit,marque:e.target.value})}></input>
+            <input type="text" placeholder="img" onChange={(e)=>setnewproduit({...newproduit,img:e.target.value})}></input>
+            <input type="text" placeholder="prix" onChange={(e)=>setnewproduit({...newproduit,prix:e.target.value})}></input>
+            <input type="text" placeholder="description" onChange={(e)=>setnewproduit({...newproduit,description:e.target.value})}></input>
+            <input type="text" placeholder="rating" onChange={(e)=>setnewproduit({...newproduit,rating:e.target.value})}></input>
+
+            <button className="btn_ajout_produit" onClick={()=>( dispatch(addproduit(newproduit)),setping(!ping))}>Confirmer</button>
+          </div></div>
+        ) : null}
+
 
       <div className="container table_dash">
         <div className="titre_tableau">Total Produits</div>
@@ -69,7 +90,7 @@ const handlemodifyclick=(elementid)=>{
                   <button className="btn_dash_supp" onClick={()=>(dispatch(deleteproduit(el?._id)),setping(!ping))}>supprimer</button>
                   <button
                     className="btn_dash_modif"
-                    onClick={() => (setshow(!show),handlemodifyclick(el))}
+                    onClick={() => (setshow(!show),handlemodifyclick(el),setupproduit(el))}
                   >
                     Modifier
                   </button>
@@ -83,7 +104,7 @@ const handlemodifyclick=(elementid)=>{
                         <input type="text" placeholder="description" onChange={(e)=>setupproduit({...upproduit,description:e.target.value})}></input>
                         <input type="text" placeholder="prix" onChange={(e)=>setupproduit({...upproduit,prix:e.target.value})}></input>
                         <input type="text" placeholder="marque" onChange={(e)=>setupproduit({...upproduit,marque:e.target.value})}></input>
-                        <button className="btn_modif_produit" onClick={()=>(dispatch(updateproduit({id:el?._id,updateproduit:upproduit})))} >valider</button>
+                        <button className="btn_modif_produit" onClick={()=>(dispatch((updateproduit({id:el?._id,updateproduit:upproduit}))),setping(!ping))} >valider</button>
                       </div>
                     </div>
                   ) : null}
@@ -92,24 +113,10 @@ const handlemodifyclick=(elementid)=>{
             </>
           ))}
         </table>
-        <button className="btn_ajout_produit" onClick={() => setajout(!ajout)}>
-          Ajouté un Produit
-        </button>
-        {ajout ? (
-          <div className="block_ajout">
-            <input type="text" placeholder="categorie" onChange={(e)=>setnewproduit({...newproduit,categorie:e.target.value})}></input>
-            <input type="text" placeholder="produit" onChange={(e)=>setnewproduit({...newproduit,produit:e.target.value})}></input>
-            <input type="text" placeholder="nomproduit" onChange={(e)=>setnewproduit({...newproduit,nomproduit:e.target.value})}></input>
-            <input type="text" placeholder="marque" onChange={(e)=>setnewproduit({...newproduit,marque:e.target.value})}></input>
-            <input type="text" placeholder="img" onChange={(e)=>setnewproduit({...newproduit,img:e.target.value})}></input>
-            <input type="text" placeholder="prix" onChange={(e)=>setnewproduit({...newproduit,prix:e.target.value})}></input>
-            <input type="text" placeholder="description" onChange={(e)=>setnewproduit({...newproduit,description:e.target.value})}></input>
-            <input type="text" placeholder="rating" onChange={(e)=>setnewproduit({...newproduit,rating:e.target.value})}></input>
-
-            <button className="btn_ajout_produit" onClick={()=>( dispatch(addproduit(newproduit)),setping(!ping))}>Confirmer</button>
-          </div>
-        ) : null}
+       
+        
       </div>
+     
     </div>
   );
 };

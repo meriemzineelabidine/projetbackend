@@ -11,21 +11,31 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { getcommande } from "../Js/CommandeSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { userCurrent } from "../Js/SliceUser/Sliceuser";
+import { FaFlask, FaHeart, FaMobileAlt, FaTshirt, FaUtensils, FaWineBottle } from 'react-icons/fa';
 
-const NavBoom = () => {
+const NavBoom = ({ onSearch }) => {
   const isAuth = localStorage.getItem("token");
-  const isadmin= localStorage.getItem("isadmin");
-  console.log(isadmin)
+  const isadmin = localStorage.getItem("isadmin");
+  console.log(isadmin);
   const [show, setshow] = useState(false);
-    const dispatch=useDispatch()
-    useEffect(() => {
-      dispatch(getcommande());
-    }, [])
-    
-    const commandes=useSelector((store)=>store.commande?.commande)
-    const user=useSelector((store)=>store.user?.user)
-const commanseuser=commandes?.filter((el)=>el?.iduser==user?._id)
-console.log("tableau",commanseuser)
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getcommande());
+  }, []);
+
+  const commandes = useSelector((store) => store.commande?.commande);
+  const user = useSelector((store) => store.user?.user);
+  const commanseuser = commandes?.filter((el) => el?.iduser == user?._id);
+  console.log("tableau", commanseuser);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+  const handleSearchClick = () => {
+    // Appel de la fonction de recherche définie dans le composant parent
+    onSearch(searchTerm);
+  };
   return (
     <div>
       <div className="bar-menu">
@@ -38,7 +48,7 @@ console.log("tableau",commanseuser)
                 <ul className="list-link">
                   <Link to={"/telettablette"}>
                     <li className="link1">
-                      Télephone && Tablette
+                    <FaMobileAlt /> Télephone && Tablette
                       <div className="sous-menu1">
                         <ul className="téléphone-portable">
                           <Link to={"/tel"}>
@@ -89,7 +99,7 @@ console.log("tableau",commanseuser)
                   </Link>
                   <Link>
                     <li className="link2">
-                      Cuisine && Eléctroménager
+                    <FaUtensils/> Cuisine && Eléctroménager
                       <div className="sous-menu2">
                         <ul className="téléphone-portable">
                           <Link>
@@ -150,7 +160,7 @@ console.log("tableau",commanseuser)
                   <Link>
                     <li className="link3">
                       {" "}
-                      Santé && Beauté
+                      <FaFlask /> Santé && Beauté
                       <div className="sous-menu3">
                         <ul className="téléphone-portable">
                           <Link>
@@ -207,7 +217,7 @@ console.log("tableau",commanseuser)
                   </Link>
                   <Link>
                     <li className="link4">
-                      Modes
+                    <FaTshirt /> Modes
                       <div className="sous-menu4">
                         <ul className="téléphone-portable">
                           <Link>
@@ -272,47 +282,60 @@ console.log("tableau",commanseuser)
               className="input-recherche"
               type="text"
               placeholder="chercher un produit,une marque ou une catégorie"
+              value={searchTerm}
+              onChange={handleInputChange}
             ></input>
-            <button className="bouton-recherche">Rechercher</button>
+            <button className="bouton-recherche" onClick={handleSearchClick}>
+              Rechercher
+            </button>
           </div>
           <div className="cnx">
-            {!isAuth?(
+            {!isAuth ? (
               <>
-              <Link to={"/register"}className="compte">
-                <div className="compte_c">
-             <FontAwesomeIcon icon={faUser} className="icon_compte"/>
-             <div className="lien_compte">Se Connecter</div></div></Link>
-            </>
-            )
-            :isAuth && isadmin=="false"?(
+                <Link to={"/register"} className="compte">
+                  <div className="compte_c">
+                    <FontAwesomeIcon icon={faUser} className="icon_compte" />
+                    <div className="lien_compte">Se Connecter</div>
+                  </div>
+                </Link>
+              </>
+            ) : isAuth && isadmin == "false" ? (
               <>
-              <Link to={"/profil"} className="compte" >
-                <div className="compte_c">
-             <FontAwesomeIcon icon={faUser} className="icon_compte" />
-            <div className="lien_compte"> Mon Profil</div> </div></Link>
-            </>)
-            :isAuth && isadmin=="true"?(
-            <>
-              <Link to={"/dashbord"} className="compte" >
-                <div className="compte_c">
-             <FontAwesomeIcon icon={faUser} className="icon_compte" />
-            <div className="lien_compte"> Dashbord </div> </div></Link>
-            </>):null}
+                <Link to={"/profil"} className="compte">
+                  <div className="compte_c">
+                    <FontAwesomeIcon icon={faUser} className="icon_compte" />
+                    <div className="lien_compte"> Mon Profil</div>{" "}
+                  </div>
+                </Link>
+              </>
+            ) : isAuth && isadmin == "true" ? (
+              <>
+                <Link to={"/dashbord"} className="compte">
+                  <div className="compte_c">
+                    <FontAwesomeIcon icon={faUser} className="icon_compte" />
+                    <div className="lien_compte"> Dashbord </div>{" "}
+                  </div>
+                </Link>
+              </>
+            ) : null}
           </div>
-        
-          <Link to={"/pannier"} >
+
+          <Link to={"/pannier"}>
             <div className="pannier">
-              
-             <div className="notification"> 
-      
-              <FontAwesomeIcon icon={faCartShopping} className="icon-profile" 
-              />
-              {commanseuser?.length!=0?(<div className="cercle"><div className="nbre_commandes">{commanseuser?.length}</div></div>):null}
-              
+              <div className="notification">
+                <FontAwesomeIcon
+                  icon={faCartShopping}
+                  className="icon-profile"
+                />
+                {commanseuser?.length != 0 ? (
+                  <div className="cercle">
+                    <div className="nbre_commandes">{commanseuser?.length}</div>
+                  </div>
+                ) : null}
               </div>
               <p className="lien_icon"> Pannier</p>
-           
-          </div> </Link>
+            </div>{" "}
+          </Link>
         </div>
       </div>
     </div>
